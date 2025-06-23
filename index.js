@@ -26,7 +26,12 @@ const sum = (numString) => {
 		throw new Error(`negatives not allowed: ${negativeNumbers.join(', ')}`)
 	}
 
-	return numArr.reduce((total, curr) => (total += curr), 0)
+	return numArr.reduce((total, curr) => {
+		// skip curr which is bigger than 1000
+		if (curr > 1000) return total
+		total += curr
+		return total
+	}, 0)
 }
 
 module.exports = { sum }
