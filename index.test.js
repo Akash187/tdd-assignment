@@ -20,4 +20,8 @@ describe('Test sum function', () => {
 	test('Unknown number string', () => {
 		expect(sum('1,2,3,4,5')).toBe(15)
 	})
+
+	test('Handle newline between numbers', () => {
+		expect(sum('1,2/n3,4')).toBe(10)
+	})
 })
