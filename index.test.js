@@ -36,4 +36,12 @@ describe('Test sum function', () => {
 	test('Custom delimiter Example 3', () => {
 		expect(sum('//$\n1$2$3')).toBe(6)
 	})
+
+	test('Negative numbers example 1', () => {
+		expect(sum('-1,2')).toThrow('negatives not allowed')
+	})
+
+	test('Negative numbers example 2', () => {
+		expect(sum('1,-2,-3')).toThrow('negatives not allowed')
+	})
 })
