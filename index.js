@@ -16,9 +16,14 @@ const sum = (numString) => {
 			curr = ''
 		}
 	}
-
 	if (Number(curr)) {
 		numArr.push(Number(curr))
+	}
+
+	// Handle negative numbers
+	const negativeNumbers = numArr.filter((num) => num < 0)
+	if (negativeNumbers.length > 0) {
+		throw new Error(`negatives not allowed: ${negativeNumbers.join(', ')}`)
 	}
 
 	return numArr.reduce((total, curr) => (total += curr), 0)

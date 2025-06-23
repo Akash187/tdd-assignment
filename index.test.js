@@ -38,10 +38,10 @@ describe('Test sum function', () => {
 	})
 
 	test('Negative numbers example 1', () => {
-		expect(sum('-1,2')).toThrow('negatives not allowed')
+		expect(() => sum('-1,2')).toThrow('negatives not allowed')
 	})
 
 	test('Negative numbers example 2', () => {
-		expect(sum('1,-2,-3')).toThrow('negatives not allowed')
+		expect(() => sum('1,-2,-3')).toThrow('negatives not allowed')
 	})
 })
