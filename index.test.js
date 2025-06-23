@@ -64,4 +64,8 @@ describe('Test sum function', () => {
 	test('Allow multiple delimiters', () => {
 		expect(sum('//[*][%]\n1*2%32')).toBe(35)
 	})
+
+	test('Multiple delimiters with length longer than one char', () => {
+		expect(sum('//[%%%][///][.]\n1***2///3.4')).toBe(10)
+	})
 })
