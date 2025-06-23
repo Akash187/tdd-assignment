@@ -60,4 +60,8 @@ describe('Test sum function', () => {
 	test('Delimiters can be of any length', () => {
 		expect(sum('//[***]\n1***2***3')).toBe(6)
 	})
+
+	test('Allow multiple delimiters', () => {
+		expect(sum('//[*][%]\n1*2%32')).toBe(35)
+	})
 })
