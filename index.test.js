@@ -56,4 +56,8 @@ describe('Test sum function', () => {
 	test('Numbers bigger than 1000 Example 3', () => {
 		expect(sum('1000\n2000,3')).toBe(1003)
 	})
+
+	test('Delimiters can be of any length', () => {
+		expect(sum('//[***]\n1***2***3')).toBe(6)
+	})
 })
