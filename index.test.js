@@ -44,4 +44,16 @@ describe('Test sum function', () => {
 	test('Negative numbers example 2', () => {
 		expect(() => sum('1,-2,-3')).toThrow('negatives not allowed')
 	})
+
+	test('Numbers bigger than 1000 Example 1', () => {
+		expect(sum('1,2,1001')).toBe(3)
+	})
+
+	test('Numbers bigger than 1000 Example 2', () => {
+		expect(sum('1000,1001,2')).toBe(1002)
+	})
+
+	test('Numbers bigger than 1000 Example 3', () => {
+		expect(sum('1000\n2000,3')).toBe(1003)
+	})
 })
