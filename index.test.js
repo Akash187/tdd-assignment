@@ -24,4 +24,16 @@ describe('Test sum function', () => {
 	test('Handle newline between numbers', () => {
 		expect(sum('1,2/n3,4')).toBe(10)
 	})
+
+	test('Custom delimiter Example 1', () => {
+		expect(sum('//;\n1;2')).toBe(3)
+	})
+
+	test('Custom delimiter Example 2', () => {
+		expect(sum('//#\n8#10')).toBe(18)
+	})
+
+	test('Custom delimiter Example 3', () => {
+		expect(sum('//$\n1$2$3')).toBe(6)
+	})
 })
