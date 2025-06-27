@@ -1,9 +1,21 @@
 const sum = (numString) => {
 	if (!numString) return 0
+	const numArray = extractNums(numString)
+	checkIsNegativeValue(numArray)
+	const filteredNums = removeNumGreaterThan1000(numArray)
+	return calculateTotal(filteredNums)
+}
 
-	const numArr = []
+function removeNumGreaterThan1000(numArr) {
+	return numArr.filter((num) => num <= 1000)
+}
 
-	// parse full string and find all the numbers including negative numbers
+function calculateTotal(numArray) {
+	return numArray.reduce((total, curr) => total + curr, 0)
+}
+
+function extractNums(numString) {
+	const numArray = []
 	let curr = ''
 	const regex = /[0-9-]/
 	for (let i = 0; i < numString.length; i++) {
@@ -11,27 +23,23 @@ const sum = (numString) => {
 			curr += numString[i]
 		} else {
 			if (Number(curr)) {
-				numArr.push(Number(curr))
+				numArray.push(Number(curr))
 			}
 			curr = ''
 		}
 	}
 	if (Number(curr)) {
-		numArr.push(Number(curr))
+		numArray.push(Number(curr))
 	}
 
-	// Handle negative numbers
+	return numArray
+}
+
+function checkIsNegativeValue(numArr) {
 	const negativeNumbers = numArr.filter((num) => num < 0)
 	if (negativeNumbers.length > 0) {
 		throw new Error(`negatives not allowed: ${negativeNumbers.join(', ')}`)
 	}
-
-	return numArr.reduce((total, curr) => {
-		// skip curr which is bigger than 1000
-		if (curr > 1000) return total
-		total += curr
-		return total
-	}, 0)
 }
 
 module.exports = { sum }
